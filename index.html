@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Focus Planner</title>
+
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  
+  <!-- App Wrapper -->
+   <main>
+     
+     <!-- Header -->
+     <header>
+       <h1>Daily Focus Planner</h1>
+       <p class="date" id="current-date"></p>
+     </header>
+
+     <!-- Main Focus Section -->
+     <section class="focus-section">
+       <h2>Main Focus</h2>
+       <input 
+         type="text"
+         id="focus-input"
+         placeholder="What is your main focus today?"
+         maxlength="80"
+       />
+     </section>
+
+     <!-- Tasks Section -->
+     <section class="tasks-section">
+       <h2>Tasks</h2>
+      
+       <form id="task-form">
+         <input 
+         type="text"
+         id="task-input"
+         placeholder="Add a task"
+         maxlength="60"
+         autocomplete="off"
+         />
+         <button type="submit">Add</button>
+       </form>
+
+       <ul id="task-list"></ul>
+     </section>
+
+     <!-- Reflection Section -->
+     <section class="reflection-section">
+       <h2>Reflection</h2>
+       <textarea 
+         id="reflection-input"
+         placeholder="How did today go?"
+         rows="4"
+       ></textarea>
+     </section>
+
+   </main>
+
+</body>
+</html>

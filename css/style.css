@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Color Variables */
+:root {
+  --bg-color: #f9f9f9;       /* soft off-white */
+  --surface-color: #ffffff;  /* cards / inputs */
+  --text-primary: #111111;   /* near-black */
+  --text-secondary: #666666; /* muted gray */
+
+  --accent-color: #c2a36c;   /* muted gold */
+  --accent-hover: #b29155;
+
+  --border-color: #e5e5e5;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea {
+  font-family: inherit;
+}
