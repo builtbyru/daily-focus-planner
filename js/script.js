@@ -20,6 +20,11 @@ taskForm.addEventListener("submit", function (e) {
   const li = document.createElement("li");
   li.textContent = taskText;
 
+  // Add click to complete behavior
+  li.addEventListener("click", function () {
+    li.classList.toggle("completed");
+  });
+
   taskList.appendChild(li);
 
   taskInput.value = "";

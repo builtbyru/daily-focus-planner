@@ -111,3 +111,8 @@ textarea {
   border-radius: 6px;
   margin-bottom: 0.4rem;
 }
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
