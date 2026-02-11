@@ -18,14 +18,29 @@ taskForm.addEventListener("submit", function (e) {
   }
 
   const li = document.createElement("li");
-  li.textContent = taskText;
+  
+  const span = document.createElement("span");
+  span.textContent = taskText;
 
-  // Add click to complete behavior
-  li.addEventListener("click", function () {
-    li.classList.toggle("completed");
-  });
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "×";
+  deleteBtn.classList.add("delete-btn");
+
+  li.appendChild(span);
+  li.appendChild(deleteBtn);
 
   taskList.appendChild(li);
+
+  // Add click to complete behavior
+  span.addEventListener("click", function () {
+    span.classList.toggle("completed");
+  });
+
+  // Add delete functionality
+  deleteBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    li.remove();
+  });
 
   taskInput.value = "";
 });

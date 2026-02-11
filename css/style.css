@@ -106,13 +106,31 @@ textarea {
 }
 
 #task-list li {
-  padding: 0.6rem;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  margin-bottom: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid #eee;
+  margin-top: 0.5rem;
 }
 
-.completed {
+#task-list span {
+  cursor: pointer;
+}
+
+#task-list span.completed {
   text-decoration: line-through;
   opacity: 0.5;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.delete-btn:hover {
+  color: #000;
 }
