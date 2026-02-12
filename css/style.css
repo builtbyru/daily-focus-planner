@@ -118,7 +118,7 @@ textarea {
   cursor: pointer;
 }
 
-#task-list span.completed {
+#task-list li.completed span{
   text-decoration: line-through;
   opacity: 0.5;
 }
