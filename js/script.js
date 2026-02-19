@@ -4,6 +4,13 @@ const today = new Date();
 
 dateElement.textContent = today.toDateString();
 
+const focusInput = document.getElementById("focus-input");
+
+// Save Main Focus in localStorage
+focusInput.addEventListener("input", function () {
+  localStorage.setItem("mainFocus", focusInput.value);
+});
+
 const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
@@ -48,6 +55,7 @@ taskForm.addEventListener("submit", function (e) {
   saveTasks();
 });
 
+// Add localStorage
 function saveTasks() {
   const tasks = [];
 
@@ -96,3 +104,9 @@ function loadTasks() {
 }
 
 loadTasks();
+
+const savedFocus = localStorage.getItem("mainFocus");
+
+  if (savedFocus) {
+    focusInput.value = savedFocus;
+  }
