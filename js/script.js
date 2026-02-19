@@ -6,14 +6,21 @@ dateElement.textContent = today.toDateString();
 
 const focusInput = document.getElementById("focus-input");
 
+const reflectionInput = document.getElementById("reflection-input");
+
+const taskForm = document.getElementById("task-form");
+const taskInput = document.getElementById("task-input");
+const taskList = document.getElementById("task-list");
+
 // Save Main Focus in localStorage
 focusInput.addEventListener("input", function () {
   localStorage.setItem("mainFocus", focusInput.value);
 });
 
-const taskForm = document.getElementById("task-form");
-const taskInput = document.getElementById("task-input");
-const taskList = document.getElementById("task-list");
+// Save Reflection in localStorage
+reflectionInput.addEventListener("input", function () {
+  localStorage.setItem("reflection", reflectionInput.value);
+});
 
 taskForm.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -109,4 +116,10 @@ const savedFocus = localStorage.getItem("mainFocus");
 
   if (savedFocus) {
     focusInput.value = savedFocus;
+  }
+
+const savedReflection = localStorage.getItem("reflection");
+
+  if (savedReflection) {
+    reflectionInput.value = savedReflection;
   }
