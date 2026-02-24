@@ -110,16 +110,36 @@ function loadTasks() {
   });
 }
 
-loadTasks();
 
+function checkDailyReset() {
+  const today = new Date().toDateString();
+  const savedDate = localStorage.getItem("plannerDate");
+
+  if (savedDate !== today) {
+    // Reset everything
+    localStorage.removeItem("tasks");
+    localStorage.removeItem("mainFocus");
+    localStorage.removeItem("reflection");
+
+    localStorage.setItem("plannerDate", today);
+  }
+}
+
+checkDailyReset();
+
+// Load saved focus
 const savedFocus = localStorage.getItem("mainFocus");
 
   if (savedFocus) {
     focusInput.value = savedFocus;
   }
 
+// Load saved reflection
 const savedReflection = localStorage.getItem("reflection");
 
   if (savedReflection) {
     reflectionInput.value = savedReflection;
   }
+
+// Load tasks
+loadTasks();
