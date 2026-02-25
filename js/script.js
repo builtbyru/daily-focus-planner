@@ -56,10 +56,12 @@ taskForm.addEventListener("submit", function (e) {
     e.stopPropagation();
     li.remove();
     saveTasks();
+    updateEmptyState();
   });
 
   taskInput.value = "";
   saveTasks();
+  updateEmptyState();
 });
 
 // Add localStorage
@@ -74,6 +76,16 @@ function saveTasks() {
   });
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function updateEmptyState() {
+  const emptyState = document.getElementById("empty-state");
+
+  if (taskList.children.length === 0) {
+    emptyState.style.display = "block";
+  } else {
+    emptyState.style.display = "none";
+  }
 }
 
 function loadTasks() {
@@ -106,8 +118,11 @@ function loadTasks() {
       e.stopPropagation();
       li.remove();
       saveTasks();
+      updateEmptyState();
     });
   });
+
+  updateEmptyState();
 }
 
 
@@ -143,3 +158,4 @@ const savedReflection = localStorage.getItem("reflection");
 
 // Load tasks
 loadTasks();
+updateEmptyState();

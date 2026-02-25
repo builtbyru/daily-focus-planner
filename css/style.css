@@ -103,6 +103,7 @@ textarea {
 /* Task list */
 #task-list {
   list-style: none;
+  min-height: 20px;
 }
 
 #task-list li {
@@ -133,4 +134,11 @@ textarea {
 
 .delete-btn:hover {
   color: #000;
+}
+
+.empty-state {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 1rem;
 }
