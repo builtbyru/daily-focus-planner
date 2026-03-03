@@ -226,6 +226,10 @@ textarea:focus {
   cursor: pointer;
 }
 
+#task-list li span {
+  transition: opacity 0.25s ease, color 0.25s ease;
+}
+
 #task-list li.completed span{
   text-decoration: line-through;
   opacity: 0.5;
@@ -248,4 +252,20 @@ textarea:focus {
   font-size: 0.9rem;
   color: #999;
   margin-top: 1rem;
+}
+
+/* Task appear animation */
+@keyframes taskFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-enter {
+  animation: taskFadeIn 0.5s ease forwards;
 }

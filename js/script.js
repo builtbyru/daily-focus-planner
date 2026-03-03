@@ -86,6 +86,10 @@ taskForm.addEventListener("submit", function (e) {
   li.appendChild(deleteBtn);
 
   taskList.appendChild(li);
+  li.classList.add("task-enter");
+  setTimeout(() => {
+    li.classList.remove("task-enter");
+  }, 300);
 
   // Add click to complete behavior
   span.addEventListener("click", function () {
