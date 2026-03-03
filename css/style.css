@@ -6,22 +6,48 @@
 
 /* Color Variables */
 :root {
-  --bg-color: #f9f9f9;       /* soft off-white */
-  --surface-color: #ffffff;  /* cards / inputs */
-  --text-primary: #111111;   /* near-black */
-  --text-secondary: #666666; /* muted gray */
+  /* Background */
+  --bg-primary: #111315;
+  --bg-secondary: #1a1d21;
 
-  --accent-color: #c2a36c;   /* muted gold */
-  --accent-hover: #b29155;
+  /* Text */
+  --text-primary: #f5f5f5;
+  --text-secondary: #a0a4aa;
 
-  --border-color: #e5e5e5;
+  /* Accent */
+  --accent: #8b7dff;
+
+  /* Borders */
+  --border-color: #2a2f36;
+
+  /* Glow */
+  --glow: rgba(139, 125, 255, 0.4);
+
+  /* Card */
+  --card-bg: rgba(26, 29, 33, 0.8);
+}
+
+.light-mode {
+  --bg-primary: #f4f5f7;
+  --bg-secondary: #ffffff;
+
+  --text-primary: #111315;
+  --text-secondary: #555;
+
+  --accent: #6c5ce7;
+
+  --border-color: #e0e0e0;
+
+  --glow: rgba(108, 92, 231, 0.25);
+
+  --card-bg: rgba(255, 255, 255, 0.8);
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: var(--bg-color);
+  background: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 a {
@@ -35,15 +61,20 @@ button, input, textarea {
 
 /* APP Layout */
 .app {
-  max-width: 420px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s ease;
 }
 
 /* Header */
 .app-header {
   text-align: center;
   margin-bottom: 2rem;
+  padding: 2rem;
 }
 
 .app-header h1 {
@@ -54,11 +85,57 @@ button, input, textarea {
 .date {
   font-size: 0.9rem;
   color: var(--text-secondary);
+  padding: 1rem;
+}
+
+.theme-switch {
+  position: relative;
+  width: 50px;
+  height: 26px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  top: 3px;
+  background: var(--accent);
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+input:checked + .slider {
+  box-shadow: 0 0 10px var(--glow);
 }
 
 /* Section Cards */
 section {
-  background-color: var(--surface-color);
+  background-color: var(--bg-secondary);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   border-radius: 12px;
@@ -73,11 +150,41 @@ h2 {
 /* Inputs */
 input,
 textarea {
-  width: 100%;
-  padding: 0.6rem;
+  background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 0.9rem;
+  color: var(--text-primary);
+  padding: 0.6rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--glow);
+}
+
+.focus-section {
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.focus-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+.focus-section.active::after {
+  width: 100%;
+  box-shadow: 0 0 8px var(--glow);
 }
 
 /* Task form */
@@ -94,7 +201,7 @@ textarea {
 #task-form button {
   padding: 0.6rem 1rem;
   border: none;
-  background: var(--accent-color);
+  background: var(--accent);
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -111,7 +218,7 @@ textarea {
   justify-content: space-between;
   align-items: center;
   padding: 0.6rem 0.8rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
   margin-top: 0.5rem;
 }
 

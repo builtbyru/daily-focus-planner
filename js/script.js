@@ -4,7 +4,49 @@ const today = new Date();
 
 dateElement.textContent = today.toDateString();
 
+const themeToggle = document.getElementById("theme-toggle");
+
+function loadTheme() {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+    themeToggle.checked = true;
+  }
+}
+
+function toggleTheme() {
+  if (themeToggle.checked) {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light");
+  } else {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark");
+  }
+}
+
+themeToggle.addEventListener("change", toggleTheme);
+
 const focusInput = document.getElementById("focus-input");
+
+const sections = document.querySelectorAll(".planner-section");
+
+sections.forEach(section => {
+  const inputs = section.querySelectorAll("input, textarea");
+
+  inputs.forEach(input => {
+    input.addEventListener("focus", () => {
+      sections.forEach(s => s.classList.remove("active"));
+      section.classList.add("active");
+    });
+  });
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".planner-section")) {
+    sections.forEach(s => s.classList.remove("active"));
+  }
+});
 
 const reflectionInput = document.getElementById("reflection-input");
 
@@ -141,21 +183,19 @@ function checkDailyReset() {
 }
 
 checkDailyReset();
+loadTheme();
 
 // Load saved focus
 const savedFocus = localStorage.getItem("mainFocus");
-
-  if (savedFocus) {
-    focusInput.value = savedFocus;
-  }
+if (savedFocus) {
+  focusInput.value = savedFocus;
+}
 
 // Load saved reflection
 const savedReflection = localStorage.getItem("reflection");
-
-  if (savedReflection) {
-    reflectionInput.value = savedReflection;
-  }
+if (savedReflection) {
+  reflectionInput.value = savedReflection;
+}
 
 // Load tasks
 loadTasks();
-updateEmptyState();
