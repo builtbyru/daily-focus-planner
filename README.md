@@ -45,7 +45,7 @@ Rather than building a feature-heavy application, this planner prioritizes inten
 
 ## Live Demo
 
-(Will be added after deployment)
+🔗 https://builtbyru.github.io/daily-focus-planner/
 
 ---
 
